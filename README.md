@@ -30,8 +30,8 @@ We provide three checkpoints with different training strategies.
 | Version | Dataset    | SD |Download |
 |---------|------------|----|---------|
 | v1.0 | HICO-DET                 | v1.4| [HF Hub](https://huggingface.co/jiuntian/interactiondiffusion-weight/blob/main/interact-diffusion-v1.pth) |
-| v1.1 | HICO-DET                 | v1.5| [HF Hub](?) |
-| v1.2 | HICO-DET + VisualGenome  | v1.5| [HF Hub](?) |
+| v1.1 | HICO-DET                 | v1.5| [HF Hub](https://huggingface.co/jiuntian/interactiondiffusion-weight/blob/main/interact-diffusion-v1-1.pth) |
+| v1.2 | HICO-DET + VisualGenome  | v1.5| [HF Hub](https://huggingface.co/jiuntian/interactiondiffusion-weight/blob/main/interact-diffusion-v1-2.pth) |
 
 Note that the experimental results in our paper is referring to v1.0.
 
@@ -46,6 +46,12 @@ We develop an AutomaticA111's Stable Diffuion WebUI extension to allow the use o
 ## Inference and Training Code
 
 🚧 Code is working on progress and will be open soon. 🏗️  🔨 Please stay tuned!
+
+## TODO
+
+- [ ] Code Release
+- [ ] HuggingFace demo
+- [x] WebUI extension
 
 ## Citation
 
