@@ -1,1 +1,353 @@
-Hello world!
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="InteractDiffusion: Interaction Control in Text-to-Image Diffusion Models">
+    <meta name="keywords" content="InteractionDiffusion">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InteractionDiffusion: Interaction Control in Text-to-Image Diffusion Models</title>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/icon.png">
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 2px solid #F1F4F5;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(3n - 1) {
+            background-color: #F1F4F5;
+        }
+
+        tr:nth-child(3n) {
+            border: 2px solid #FFFFFF;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">InteractDiffusion: Interaction Control in <br>
+                            Text-to-Image Diffusion Models</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://jiuntian.com/">Jiun Tian Hoe</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://personal.ntu.edu.sg/exdjiang/">Xudong Jiang</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                                <a href="http://cs-chan.com">Chee Seng Chan</a><sup>2</sup>,</span>
+                            </span>
+                            <!--            <br>-->
+                            <span class="author-block">
+                                <a href="https://personal.ntu.edu.sg/eyptan/">Yap-Peng Tan</a><sup>1</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=zo6ni_gAAAAJ">Weipeng
+                                    Hu</a><sup>1</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Nanyang Technological University,</span>&nbsp;
+                            <span class="author-block"><sup>2</sup>Universiti Malaya</span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/?"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/jiuntian/interactdiffusion"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code (Coming Soon)</span>
+                                    </a>
+                                </span>
+                                <!-- Demo Link. -->
+                                <span class="link-block">
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fa fa-terminal"></i>
+                                        </span>
+                                        <span>Demo (Coming Soon)</span>
+                                    </a>
+                                </span>
+                                <!-- SD webui Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/jiuntian/sd-webui-interactdiffusion" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fa fa-puzzle-piece"></i>
+                                        </span>
+                                        <span>SD WebUI Extension</span>
+                                    </a>
+                                </span>
+                                <!-- Video Link. -->
+                                <span class="link-block">
+                                    <a href="https://youtu.be/Uunzufq8m6Y"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <img id="teaser" autoplay muted loop playsinline height="100%" src="./static/res/teaser.jpg"
+                    style="width:100%;">
+                <p class="subtitle has-text-centered" style="font-size: 16px;">
+                    Stable Diffusion conditions on text caption only, while GLIGEN conditions on extra layout input. Our
+                    proposed <span class="dnerf">InteractionDiffusion</span> conditions on extra interaction label and
+                    its
+                    location shown by the shaded area. It effectively <b>controls the interaction</b> in generated samples
+                    based on
+                    given interaction control information in contrast of the "<i>object placing</i>" effect in baselines.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Large-scale text-to-image (T2I) diffusion models have showcased incredible capabilities in
+                            generating coherent images based on textual descriptions, enabling vast applications in
+                            content
+                            generation. While recent advancements have introduced control over factors such as object
+                            localization, posture, and image contours, a crucial gap remains in our ability to control
+                            the
+                            interactions between objects in the generated content. Well-controlling interactions in
+                            generated images could yield meaningful applications, such as creating realistic scenes with
+                            interacting characters. In this work, we study the problems of conditioning T2I diffusion
+                            models
+                            with Human-Object Interaction (HOI) information, consisting of a triplet label (person,
+                            action,
+                            object) and corresponding bounding boxes. We propose a pluggable interaction control model,
+                            called InteractDiffusion that extends existing pre-trained T2I diffusion models to enable
+                            them
+                            being better conditioned on interactions. Specifically, we tokenize the HOI information and
+                            learn their relationships via interaction embeddings. A conditioning self-attention layer is
+                            trained to map HOI tokens to visual tokens, thereby conditioning the visual tokens better in
+                            existing T2I diffusion models. Our model attains the ability to control the interaction and
+                            location on existing T2I diffusion models, which outperforms existing baselines by a large
+                            margin in HOI detection score, as well as fidelity in FID and KID.
+                        </p>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Uunzufq8m6Y?si=uQdzbwDSAg6oRsBP"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+            <!-- Paper video. -->
+            <!-- <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Video</h2>
+            <div class="publication-video">
+              <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div> -->
+
+            <!--/ Paper video.  <span class="dnerf">InteractDiffusion<\span> -->
+        </div>
+    </section>
+
+
+    <section class="section" id="Method">
+        <div class="container is-max-desktop content">
+            <h2 class="title">Method</h2>
+            <section class="hero method">
+                <div class="container is-max-desktop">
+                    <div class="hero-body">
+                        <img id="arch" autoplay muted loop playsinline height="100%" src="./static/res/arch.jpg"
+                            style="width:100%;height:100%;">
+                        <p>
+                            Our proposed pluggable Interaction Module \(I\) seamlessly incorporate interaction
+                            information into
+                            an existing T2I diffusion model (left). The proposed module \(I\) (right) consists of
+                            Interaction
+                            Tokenizer that transforms interaction information into meaningful tokens, Interaction
+                            Embedding
+                            that incorporates intricate interaction relationship, and Interaction Self-Attention that
+                            integrates interaction control information into Visual Tokens of the existing T2I diffusion
+                            model.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+    <section class="section" id="Results">
+        <div class="container is-max-desktop content">
+            <h2 class="title">Results</h2>
+            <section class="hero method">
+                <div class="container is-max-desktop">
+                    <div class="hero-body">
+
+                        <h3 class="title">Qualitative Results</h3>
+                        <h4 class="title">1. Controlling Stable Diffusion</h4>
+                        <img id="qualitative" autoplay muted loop playsinline height="100%"
+                            src="./static/res/qualitative.jpg" style="width:100%;height:100%;"
+                            alt="Qualitative results">
+
+                        <p style="margin-bottom: 60px;"></p>
+
+                        <h4 class="title">2. Controlling DreamBooth Personalized SD models</h4>
+                        <img id="dream_booth" autoplay muted loop playsinline height="100%"
+                            src="./static/res/dreambooth.jpg" style="width:100%;height:100%;" alt="Qualitative results">
+
+                        <p style="margin-bottom: 60px;"></p>
+
+                        <h4 class="title">3. Controlling with Different Actions</h4>
+                        <img id="diff_action" autoplay muted loop playsinline height="100%"
+                            src="./static/res/diff_action.jpg" style="width:100%;height:100%;" alt="Different action">
+                        <p style="margin-bottom: 30px;"></p>
+                        <h4 class="title">4. Controlling with Different Objects</h4>
+                        <img id="diff_object" autoplay muted loop playsinline height="100%"
+                            src="./static/res/diff_object.jpg" style="width:100%;height:100%;" alt="Different objects">
+
+                        <p style="margin-bottom: 60px;"></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+    <section class="section" id="comparison">
+        <div class="container is-max-desktop content">
+            <h2 class="title">Comparison to Recent Works</h2>
+            <section class="hero method">
+                <div class="container is-max-desktop">
+                    <div class="hero-body">
+                        <h3 class="title">Quantitative Compare</h3>
+                        <img id="quantitative" autoplay muted loop playsinline height="100%"
+                            src="./static/res/quantitative.jpg" style="width:100%;height:100%;">
+                        <p class="subtitle has-text-centered" style="font-size: 16px;">
+                            Quantitative comparison between InteractDiffusion and existing baselines in terms of
+                            generated image quality scores in FID and KID and HOI detection score in mAP. GLIGEN* is
+                            HICO-DET fine-tuned GLIGEN model. The last row shows the Detection Score from real images. ↓
+                            indicates the lower the better, and vice versa.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <section class="section" id='RelatedLinks'>
+        <div class="container is-max-desktop content">
+            <h2 class="title">Related Links</h2>
+
+            <ul>
+                <li><a href="https://ommer-lab.com/research/latent-diffusion-models/"> High-Resolution Image Synthesis
+                        with
+                        Latent Diffusion Models (a.k.a. LDM & Stable Diffusion)</a></li>
+                <li><a href="https://gligen.github.io">GLIGEN: Open-Set Grounded Text-to-Image Generation</a></li>
+                <li><a href="https://github.com/xiaomabufei/FGAHOI">FGAHOI: Fine-Grained Anchors for Human-Object
+                        Interaction Detection</a></li>
+            </ul>
+
+        </div>
+    </section>
+
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <p> If you use our work in your research, please cite: </p>
+            <pre><code>pending</code></pre>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <a class="icon-link" href="https://github.com/jiuntian/interactdiffusion/blob/main/figures/paper.pdf">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                <a class="icon-link" href="https://github.com/jiuntian/interactdiffusion" class="external-link"
+                    disabled>
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            Website adapted from <a href="https://disco-dance.github.io">DisCo</a> and <a
+                                href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
