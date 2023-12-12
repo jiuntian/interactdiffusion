@@ -6,11 +6,12 @@
 [Weipeng Hu](https://scholar.google.com/citations?user=zo6ni_gAAAAJ)
 
 [Project Page](https://jiuntian.github.io/interactdiffusion) |
- [Paper](https://arxiv.org/abs/?) |
+ [Paper](https://arxiv.org/abs/2312.05849) |
  [WebUI](https://github.com/jiuntian/sd-webui-interactdiffusion) |
  [Demo (coming soon)](https://huggingface.co/spaces/interactdiffusion/demo) |
  [Video](https://www.youtube.com/watch?v=Uunzufq8m6Y)
 
+[![Paper](https://img.shields.io/badge/cs.CV-arxiv:2312.05849-B31B1B.svg)](https://arxiv.org/abs/2312.05849)
 [![Page Views Count](https://badges.toozhao.com/badges/01HH1JE53YX5TDDDDCG6PXY8WQ/blue.svg)](https://badges.toozhao.com/stats/01HH1JE53YX5TDDDDCG6PXY8WQ "Get your own page views count badge on badges.toozhao.com")
 
 ![Teaser figure](docs/static/res/teaser.jpg)
@@ -39,7 +40,7 @@ Note that the experimental results in our paper is referring to v1.0.
 - v1.1 is based on Stable Diffusion v1.5 and GLIGEN. We train at batch size of 32 for 250k steps on HICO-DET.
 - v1.1 is based on InteractDiffusion v1.1. We train further at batch size of 32 for 172.5k steps on HICO-DET and VisualGenome.
 
-## Extension for AutomaticA111's Stable Diffuion WebUI
+## Extension for AutomaticA111's Stable Diffusion WebUI
 
 We develop an AutomaticA111's Stable Diffuion WebUI extension to allow the use of InteractDiffusion over existing SD models. Check out the plugin at [sd-webui-interactdiffusion](https://github.com/jiuntian/sd-webui-interactdiffusion). Note that it is still on `alpha`. 
 
@@ -64,5 +65,12 @@ Some examples generated with InteractDiffusion, together with other DreamBooth a
 ## Citation
 
 ```bibtex
-???
+@misc{hoe2023interactdiffusion,
+      title={InteractDiffusion: Interaction Control in Text-to-Image Diffusion Models}, 
+      author={Jiun Tian Hoe and Xudong Jiang and Chee Seng Chan and Yap-Peng Tan and Weipeng Hu},
+      year={2023},
+      eprint={2312.05849},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
