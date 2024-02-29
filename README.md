@@ -65,12 +65,10 @@ Some examples generated with InteractDiffusion, together with other DreamBooth a
 ## Citation
 
 ```bibtex
-@misc{hoe2023interactdiffusion,
+@inproceedings{hoe2023interactdiffusion,
       title={InteractDiffusion: Interaction Control in Text-to-Image Diffusion Models}, 
       author={Jiun Tian Hoe and Xudong Jiang and Chee Seng Chan and Yap-Peng Tan and Weipeng Hu},
-      year={2023},
-      eprint={2312.05849},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+      year={2024},
+      booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
 }
 ```
