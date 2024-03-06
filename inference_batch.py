@@ -120,7 +120,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--folder", type=str, default="generation_samples", help="root folder for output")
 
-    parser.add_argument("--batch_size", type=int, default=2, help="")
+    parser.add_argument("--batch_size", type=int, default=1, help="")
     parser.add_argument("--no_plms", action='store_true', help="use DDIM instead. WARNING: I did not test the code yet")
     parser.add_argument("--guidance_scale", type=float, default=7.5, help="")
     parser.add_argument("--negative_prompt", type=str,
@@ -128,8 +128,8 @@ if __name__ == "__main__":
                                 ' cropped, worst quality, low quality',
                         help="negative prompt")
     parser.add_argument("--no-overwrite", action="store_true", help="do not overwrite")
-    parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--scheduled-sampling", type=float, default=0.8)
+    parser.add_argument("--seed", type=int, default=489)
+    parser.add_argument("--scheduled-sampling", type=float, default=1.0)
     parser.add_argument("--res", type=str, default="hico", choices=["hico", "2in1"])
     parser.add_argument("--half", action='store_true', help="use 16 bit")
     args = parser.parse_args()
@@ -137,7 +137,7 @@ if __name__ == "__main__":
     assert args.batch_size == 1, 'now only support bs=1, because every image saved with same name'
 
     if args.res == "hico":
-        res_path = "prompt_inputs_multi_test_gligenhoi_without_a_full.pkl"
+        res_path = "DATA/hico_det_test.pkl"
     else:
         raise ValueError(f"invalid res type: {args.res}")
     print(f"Loading res type {args.res} from {res_path}")

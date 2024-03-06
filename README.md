@@ -54,9 +54,20 @@ Some examples generated with InteractDiffusion, together with other DreamBooth a
 ![cuteyukimix_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/1416f2b6-4907-4ac7-bb03-b5d2b5adcd91)|![cuteyukimix_7](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/7b619e4e-7d0b-4989-85f9-422fbd6a6319)|![darksushimix_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/2b81abe3-a39a-4db8-9e7a-63336f96d7e3)|![toonyou_6](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/ce027fac-7840-44cc-9f69-0bdeef5da1da)
 ![image (8)](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/0bc70ee4-9f84-4340-994c-fbde99a17062)|![cuteyukimix_4](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/0d12f242-cc90-4871-8d2c-02f7c36c70cf)|![darksushimix_5](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/cd716268-92d2-48fa-bbc5-a291c80f7f9a)|![rcnzcartoon_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/ce8c33f1-62fd-4c44-ae76-d5b70b1f05f5)
 
-## Inference
+## Inference & Evaluate
 
-🚧 Code is working on progress and will be open soon. 🏗️  🔨 Please stay tuned!
+🚧 Instruction is working on progress. 🏗️  🔨 Please stay tuned!
+
+1. Change `ckpt.pth` in interence_batch.py to selected checkpoint.
+2. Made inference on InteractDiffusion to synthesis the test set of HICO-DET based on the ground truth.
+
+      ```bash
+      python inference_batch.py --batch_size 1 --folder generate_output --seed 489 --scheduled-sampling 1.0 --half
+      ```
+  
+3. Prepare for evaluate on FGAHOI.
+4. Evaluate on FGAHOI.
+5. Evaluate for FID and KID.
 
 ## Training
 
