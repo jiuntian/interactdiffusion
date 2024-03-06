@@ -23,6 +23,7 @@
 
 ## News
 
+- **[2024.2.27]** InteractionDiffusion paper is accepted at CVPR 2024.
 - **[2023.12.12]** InteractionDiffusion paper is released. WebUI of InteractDiffusion is available as *alpha* version.
 
 ## Download InteractDiffusion models
@@ -42,9 +43,10 @@ Note that the experimental results in our paper is referring to v1.0.
 
 ## Extension for AutomaticA111's Stable Diffusion WebUI
 
-We develop an AutomaticA111's Stable Diffuion WebUI extension to allow the use of InteractDiffusion over existing SD models. Check out the plugin at [sd-webui-interactdiffusion](https://github.com/jiuntian/sd-webui-interactdiffusion). Note that it is still on `alpha`. 
+We develop an AutomaticA111's Stable Diffuion WebUI extension to allow the use of InteractDiffusion over existing SD models. Check out the plugin at [sd-webui-interactdiffusion](https://github.com/jiuntian/sd-webui-interactdiffusion). Note that it is still on `alpha` version.
 
 ### Gallery
+
 Some examples generated with InteractDiffusion, together with other DreamBooth and LoRA models.
 &nbsp;| &nbsp;| &nbsp;| &nbsp;
 --- | --- | --- | ---
@@ -52,15 +54,25 @@ Some examples generated with InteractDiffusion, together with other DreamBooth a
 ![cuteyukimix_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/1416f2b6-4907-4ac7-bb03-b5d2b5adcd91)|![cuteyukimix_7](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/7b619e4e-7d0b-4989-85f9-422fbd6a6319)|![darksushimix_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/2b81abe3-a39a-4db8-9e7a-63336f96d7e3)|![toonyou_6](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/ce027fac-7840-44cc-9f69-0bdeef5da1da)
 ![image (8)](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/0bc70ee4-9f84-4340-994c-fbde99a17062)|![cuteyukimix_4](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/0d12f242-cc90-4871-8d2c-02f7c36c70cf)|![darksushimix_5](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/cd716268-92d2-48fa-bbc5-a291c80f7f9a)|![rcnzcartoon_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/ce8c33f1-62fd-4c44-ae76-d5b70b1f05f5)
 
-## Inference and Training Code
+## Inference
 
 🚧 Code is working on progress and will be open soon. 🏗️  🔨 Please stay tuned!
 
+## Training
+
+1. Prepare the necessary dataset and pretrained models, see [DATA](DATA/readme.md)
+2. Run the following command:
+
+      ```bash
+      CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node=2 main.py --yaml_file configs/hoi_hico_text.yaml --ckpt <existing_gligen_checkpoint> --name test --batch_size=4 --gradient_accumulation_step 2 --total_iters 500000 --amp true --disable_inference_in_training true --official_ckpt_name <existing SD v1.4/v1.5 checkpoint>
+      ```
+
 ## TODO
 
-- [ ] Code Release
-- [ ] HuggingFace demo
+- [x] Code Release
+- [x] HuggingFace demo
 - [x] WebUI extension
+- [ ] Diffuser
 
 ## Citation
 
@@ -72,3 +84,7 @@ Some examples generated with InteractDiffusion, together with other DreamBooth a
       booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
 }
 ```
+
+## Acknowledgement
+
+This work is developed based on the codebase of [GLIGEN](https://github.com/gligen/GLIGEN) and [LDM](https://github.com/CompVis/latent-diffusion).
