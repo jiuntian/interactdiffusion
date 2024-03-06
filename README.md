@@ -8,7 +8,7 @@
 [Project Page](https://jiuntian.github.io/interactdiffusion) |
  [Paper](https://arxiv.org/abs/2312.05849) |
  [WebUI](https://github.com/jiuntian/sd-webui-interactdiffusion) |
- [Demo (coming soon)](https://huggingface.co/spaces/interactdiffusion/demo) |
+ [Demo](https://huggingface.co/spaces/interactdiffusion/interactdiffusion) |
  [Video](https://www.youtube.com/watch?v=Uunzufq8m6Y)
 
 [![Paper](https://img.shields.io/badge/cs.CV-arxiv:2312.05849-B31B1B.svg)](https://arxiv.org/abs/2312.05849)
