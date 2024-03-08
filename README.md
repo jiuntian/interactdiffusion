@@ -23,8 +23,52 @@
 
 ## News
 
+- **[2024.3.8]** Demo is available at [Huggingface Spaces](https://huggingface.co/spaces/interactdiffusion/interactdiffusion).
+- **[2024.3.6]** Code is released.
 - **[2024.2.27]** InteractionDiffusion paper is accepted at CVPR 2024.
 - **[2023.12.12]** InteractionDiffusion paper is released. WebUI of InteractDiffusion is available as *alpha* version.
+
+## Results
+
+<table>
+<thead>
+  <tr>
+    <th rowspan="2">Model</th>
+    <th colspan="2">Interaction Controllability</th>
+    <th rowspan="2">FID</th>
+    <th rowspan="2">KID</th>
+  </tr>
+  <tr>
+    <th>Tiny</th>
+    <th>Large</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>v1.0</td>
+    <td>29.53</td>
+    <td>31.56</td>
+    <td>18.69</td>
+    <td>0.00676</td>
+  </tr>
+  <tr>
+    <td>v1.1</td>
+    <td>30.20</td>
+    <td>31.96</td>
+    <td>17.90</td>
+    <td>0.00635</td>
+  </tr>
+  <tr>
+    <td>v1.2</td>
+    <td>30.73</td>
+    <td>33.10</td>
+    <td>17.32</td>
+    <td>0.00585</td>
+  </tr>
+</tbody>
+</table>
+
+  Interaction Controllability is measured using FGAHOI detection score. In this table, we measure the Full subset in Default setting on Swin-Tiny and Swin-Large backbone. More details on the protocol is in the paper.
 
 ## Download InteractDiffusion models
 
@@ -54,20 +98,30 @@ Some examples generated with InteractDiffusion, together with other DreamBooth a
 ![cuteyukimix_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/1416f2b6-4907-4ac7-bb03-b5d2b5adcd91)|![cuteyukimix_7](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/7b619e4e-7d0b-4989-85f9-422fbd6a6319)|![darksushimix_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/2b81abe3-a39a-4db8-9e7a-63336f96d7e3)|![toonyou_6](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/ce027fac-7840-44cc-9f69-0bdeef5da1da)
 ![image (8)](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/0bc70ee4-9f84-4340-994c-fbde99a17062)|![cuteyukimix_4](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/0d12f242-cc90-4871-8d2c-02f7c36c70cf)|![darksushimix_5](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/cd716268-92d2-48fa-bbc5-a291c80f7f9a)|![rcnzcartoon_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/ce8c33f1-62fd-4c44-ae76-d5b70b1f05f5)
 
-## Inference & Evaluate
-
-🚧 Instruction is working on progress. 🏗️  🔨 Please stay tuned!
+## Reproduce & Evaluate
 
 1. Change `ckpt.pth` in interence_batch.py to selected checkpoint.
 2. Made inference on InteractDiffusion to synthesis the test set of HICO-DET based on the ground truth.
 
       ```bash
-      python inference_batch.py --batch_size 1 --folder generate_output --seed 489 --scheduled-sampling 1.0 --half
+      python inference_batch.py --batch_size 1 --folder generated_output --seed 489 --scheduled-sampling 1.0 --half
       ```
   
-3. Prepare for evaluate on FGAHOI.
-4. Evaluate on FGAHOI.
-5. Evaluate for FID and KID.
+3. Setup FGAHOI at `../FGAHOI`. See [FGAHOI repo](https://github.com/xiaomabufei/FGAHOI) on how to setup FGAHOI and also HICO-DET dataset in `data/hico_20160224_det`.
+4. Prepare for evaluate on FGAHOI. See `id_prepare_inference.ipynb`
+5. Evaluate on FGAHOI.
+
+      ```bash
+      python main.py --backbone swin_tiny --dataset_file hico --resume weights/FGAHOI_Tiny.pth --num_verb_classes 117 --num_obj_classes 80 --output_dir logs  --merge --hierarchical_merge --task_merge --eval --hoi_path data/id_generated_output --pretrain_model_path "" --output_dir logs/id-generated-output-t
+      ```
+
+6. Evaluate for FID and KID. We recommend to resize hico_det dataset to 512x512 before perform image quality evaluation, for a fair comparison. We use [torch-fidelity](https://github.com/toshas/torch-fidelity).
+
+      ```bash
+      fidelity --gpu 0 --fid --isc --kid --input2 ~/data/hico_det_test_resize  --input1 ~/FGAHOI/data/data/id_generated_output/images/test2015
+      ```
+
+7. This should provide a brief overview of how the evaluation process works.
 
 ## Training
 
