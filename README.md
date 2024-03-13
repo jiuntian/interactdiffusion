@@ -9,7 +9,9 @@
  [Paper](https://arxiv.org/abs/2312.05849) |
  [WebUI](https://github.com/jiuntian/sd-webui-interactdiffusion) |
  [Demo](https://huggingface.co/spaces/interactdiffusion/interactdiffusion) |
- [Video](https://www.youtube.com/watch?v=Uunzufq8m6Y)
+ [Video](https://www.youtube.com/watch?v=Uunzufq8m6Y) |
+ [Diffuser](https://huggingface.co/interactdiffusion/diffusers-v1-2) |
+ [Colab](https://colab.research.google.com/drive/1Bh9PjfTylxI2rbME5mQJtFqNTGvaghJq?usp=sharing)
 
 [![Paper](https://img.shields.io/badge/cs.CV-arxiv:2312.05849-B31B1B.svg)](https://arxiv.org/abs/2312.05849)
 [![Page Views Count](https://badges.toozhao.com/badges/01HH1JE53YX5TDDDDCG6PXY8WQ/blue.svg)](https://badges.toozhao.com/stats/01HH1JE53YX5TDDDDCG6PXY8WQ "Get your own page views count badge on badges.toozhao.com")
@@ -23,6 +25,7 @@
 
 ## News
 
+- **[2024.3.13]** Diffusers code is available at [here](https://huggingface.co/interactdiffusion/diffusers-v1-2).
 - **[2024.3.8]** Demo is available at [Huggingface Spaces](https://huggingface.co/spaces/interactdiffusion/interactdiffusion).
 - **[2024.3.6]** Code is released.
 - **[2024.2.27]** InteractionDiffusion paper is accepted at CVPR 2024.
@@ -98,6 +101,33 @@ Some examples generated with InteractDiffusion, together with other DreamBooth a
 ![cuteyukimix_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/1416f2b6-4907-4ac7-bb03-b5d2b5adcd91)|![cuteyukimix_7](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/7b619e4e-7d0b-4989-85f9-422fbd6a6319)|![darksushimix_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/2b81abe3-a39a-4db8-9e7a-63336f96d7e3)|![toonyou_6](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/ce027fac-7840-44cc-9f69-0bdeef5da1da)
 ![image (8)](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/0bc70ee4-9f84-4340-994c-fbde99a17062)|![cuteyukimix_4](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/0d12f242-cc90-4871-8d2c-02f7c36c70cf)|![darksushimix_5](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/cd716268-92d2-48fa-bbc5-a291c80f7f9a)|![rcnzcartoon_1](https://github.com/jiuntian/sd-webui-interactdiffusion/assets/13869695/ce8c33f1-62fd-4c44-ae76-d5b70b1f05f5)
 
+## Diffusers
+```python
+from diffusers import DiffusionPipeline
+import torch
+
+pipeline = DiffusionPipeline.from_pretrained(
+    "interactdiffusion/diffusers-v1-2",
+    trust_remote_code=True,
+    variant="fp16", torch_dtype=torch.float16
+)
+pipeline = pipeline.to("cuda")
+
+images = pipeline(
+    prompt="a person is feeding a cat",
+    interactdiffusion_subject_phrases=["person"],
+    interactdiffusion_object_phrases=["cat"],
+    interactdiffusion_action_phrases=["feeding"],
+    interactdiffusion_subject_boxes=[[0.0332, 0.1660, 0.3359, 0.7305]],
+    interactdiffusion_object_boxes=[[0.2891, 0.4766, 0.6680, 0.7930]],
+    interactdiffusion_scheduled_sampling_beta=1,
+    output_type="pil",
+    num_inference_steps=50,
+    ).images
+
+images[0].save('out.jpg')
+```
+
 ## Reproduce & Evaluate
 
 1. Change `ckpt.pth` in interence_batch.py to selected checkpoint.
@@ -137,7 +167,7 @@ Some examples generated with InteractDiffusion, together with other DreamBooth a
 - [x] Code Release
 - [x] HuggingFace demo
 - [x] WebUI extension
-- [ ] Diffuser
+- [x] Diffuser
 
 ## Citation
 
