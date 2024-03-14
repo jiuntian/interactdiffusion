@@ -15,6 +15,8 @@
 
 [![Paper](https://img.shields.io/badge/cs.CV-arxiv:2312.05849-B31B1B.svg)](https://arxiv.org/abs/2312.05849)
 [![Page Views Count](https://badges.toozhao.com/badges/01HH1JE53YX5TDDDDCG6PXY8WQ/blue.svg)](https://badges.toozhao.com/stats/01HH1JE53YX5TDDDDCG6PXY8WQ "Get your own page views count badge on badges.toozhao.com")
+[![Hugging Face](https://img.shields.io/badge/InteractDiffusion-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/interactdiffusion/interactdiffusion)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Bh9PjfTylxI2rbME5mQJtFqNTGvaghJq?usp=sharing)
 
 ![Teaser figure](docs/static/res/teaser.jpg)
 
