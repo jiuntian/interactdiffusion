@@ -174,11 +174,13 @@ images[0].save('out.jpg')
 ## Citation
 
 ```bibtex
-@inproceedings{hoe2023interactdiffusion,
-      title={InteractDiffusion: Interaction Control in Text-to-Image Diffusion Models}, 
-      author={Jiun Tian Hoe and Xudong Jiang and Chee Seng Chan and Yap-Peng Tan and Weipeng Hu},
-      year={2024},
-      booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+@InProceedings{Hoe_2024_CVPR,
+    author    = {Hoe, Jiun Tian and Jiang, Xudong and Chan, Chee Seng and Tan, Yap-Peng and Hu, Weipeng},
+    title     = {InteractDiffusion: Interaction Control in Text-to-Image Diffusion Models},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2024},
+    pages     = {6180-6189}
 }
 ```
 
