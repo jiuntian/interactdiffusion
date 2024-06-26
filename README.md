@@ -6,7 +6,8 @@
 [Weipeng Hu](https://scholar.google.com/citations?user=zo6ni_gAAAAJ)
 
 [Project Page](https://jiuntian.github.io/interactdiffusion) |
- [Paper](https://arxiv.org/abs/2312.05849) |
+ [paper](https://openaccess.thecvf.com/content/CVPR2024/html/Hoe_InteractDiffusion_Interaction_Control_in_Text-to-Image_Diffusion_Models_CVPR_2024_paper.html) |
+ [arXiv](https://arxiv.org/abs/2312.05849) |
  [WebUI](https://github.com/jiuntian/sd-webui-interactdiffusion) |
  [Demo](https://huggingface.co/spaces/interactdiffusion/interactdiffusion) |
  [Video](https://www.youtube.com/watch?v=Uunzufq8m6Y) |
