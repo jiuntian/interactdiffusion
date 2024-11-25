@@ -71,6 +71,13 @@
     <td>17.32</td>
     <td>0.00585</td>
   </tr>
+ <tr>
+    <td>XLv1.0</td>
+    <td>--</td>
+    <td>35.60</td>
+    <td>16.65</td>
+    <td>0.00560</td>
+  </tr>
 </tbody>
 </table>
 
@@ -84,12 +91,14 @@ We provide three checkpoints with different training strategies.
 | v1.0 | HICO-DET                 | v1.4| [HF Hub](https://huggingface.co/jiuntian/interactiondiffusion-weight/blob/main/interact-diffusion-v1.pth) |
 | v1.1 | HICO-DET                 | v1.5| [HF Hub](https://huggingface.co/jiuntian/interactiondiffusion-weight/blob/main/interact-diffusion-v1-1.pth) |
 | v1.2 | HICO-DET + VisualGenome  | v1.5| [HF Hub](https://huggingface.co/jiuntian/interactiondiffusion-weight/blob/main/interact-diffusion-v1-2.pth) |
+| XLv1.0 | HICO-DET | XL | coming soon |
 
 Note that the experimental results in our paper is referring to v1.0.
 
 - v1.0 is based on Stable Diffusion v1.4 and GLIGEN. We train at batch size of 16 for 250k steps on HICO-DET. **Our paper is based on this.**
 - v1.1 is based on Stable Diffusion v1.5 and GLIGEN. We train at batch size of 32 for 250k steps on HICO-DET.
 - v1.1 is based on InteractDiffusion v1.1. We train further at batch size of 32 for 172.5k steps on HICO-DET and VisualGenome.
+- XLv1.0 is based on StableDiffusion XL v1.0 and GLIGEN-XL (which we have trained it). We train InteractDiffusion XL at batch size of 32 for 250k steps on HICO-DET, at 512x512 resolution. More details is coming soon.
 
 ## Extension for AutomaticA111's Stable Diffusion WebUI
 
