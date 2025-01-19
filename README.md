@@ -28,6 +28,7 @@
 
 ## News
 
+- **[2025.1.20]** SDXL version is available at [huggingface](https://huggingface.co/jiuntian/interactdiffusion-xl-1024/). We also release SDXL version of GLIGEN as part of the training [here](https://github.com/jiuntian/igligen-xl).
 - **[2024.3.13]** Diffusers code is available at [here](https://huggingface.co/interactdiffusion/diffusers-v1-2).
 - **[2024.3.8]** Demo is available at [Huggingface Spaces](https://huggingface.co/spaces/interactdiffusion/interactdiffusion).
 - **[2024.3.6]** Code is released.
@@ -91,14 +92,14 @@ We provide three checkpoints with different training strategies.
 | v1.0 | HICO-DET                 | v1.4| [HF Hub](https://huggingface.co/jiuntian/interactiondiffusion-weight/blob/main/interact-diffusion-v1.pth) |
 | v1.1 | HICO-DET                 | v1.5| [HF Hub](https://huggingface.co/jiuntian/interactiondiffusion-weight/blob/main/interact-diffusion-v1-1.pth) |
 | v1.2 | HICO-DET + VisualGenome  | v1.5| [HF Hub](https://huggingface.co/jiuntian/interactiondiffusion-weight/blob/main/interact-diffusion-v1-2.pth) |
-| XLv1.0 | HICO-DET | XL | coming soon |
+| XL v1.0 | HICO-DET | XL | [HF Hub](https://huggingface.co/jiuntian/interactdiffusion-xl-1024/) |
 
 Note that the experimental results in our paper is referring to v1.0.
 
 - v1.0 is based on Stable Diffusion v1.4 and GLIGEN. We train at batch size of 16 for 250k steps on HICO-DET. **Our paper is based on this.**
 - v1.1 is based on Stable Diffusion v1.5 and GLIGEN. We train at batch size of 32 for 250k steps on HICO-DET.
 - v1.1 is based on InteractDiffusion v1.1. We train further at batch size of 32 for 172.5k steps on HICO-DET and VisualGenome.
-- XLv1.0 is based on StableDiffusion XL v1.0 and GLIGEN-XL (which we have trained it). We train InteractDiffusion XL at batch size of 32 for 250k steps on HICO-DET, at 512x512 resolution. More details is coming soon.
+- XL v1.0 is based on StableDiffusion XL v1.0 and GLIGEN-XL (which we have trained it). We train InteractDiffusion XL at batch size of 32 for 250k steps on HICO-DET, at 512x512 resolution. More details is coming soon.
 
 ## Extension for AutomaticA111's Stable Diffusion WebUI
 
