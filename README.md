@@ -188,10 +188,10 @@ images[0].save('out.jpg')
 @InProceedings{Hoe_2024_CVPR,
     author    = {Hoe, Jiun Tian and Jiang, Xudong and Chan, Chee Seng and Tan, Yap-Peng and Hu, Weipeng},
     title     = {InteractDiffusion: Interaction Control in Text-to-Image Diffusion Models},
-    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-    month     = {June},
-    year      = {2024},
-    pages     = {6180-6189}
+    booktitle = {International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI)},
+    month     = {September},
+    year      = {2025},
+    pages     = {}
 }
 ```
 
